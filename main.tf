@@ -74,6 +74,12 @@ resource "azurerm_storage_account" "sa" {
     virtual_network_subnet_ids = values(var.service_endpoints)
     bypass                     = var.traffic_bypass
   }
+
+  tags = {
+    Name        = "Storage Instance"
+    Environment = "devtest"
+    Department  = "Engineering"
+  }
 }
 ## azure reference https://docs.microsoft.com/en-us/azure/storage/common/infrastructure-encryption-enable?tabs=portal
 resource "azurerm_storage_encryption_scope" "scope" {
